@@ -7,7 +7,7 @@ const _ = require('lodash');
 const path = require('path');
 
 const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
-const redirect_uri = 'https://test2.services.mobilon.ru/';
+const redirect_uri = 'https://test3.services.mobilon.ru/';
 const client_secret = 'yKdq4UemoOgZanfuV2xi8UhlMYILH9SrVomsHAK4SGXOTSFcMu4DjOcLbG8HMIsz';
 
 const app = express();
@@ -58,6 +58,6 @@ app.get('/', async (req, res) => {
 
 });
 
-app.listen(8000, () => {
-  console.log(`Example app listening at http://localhost:8000`)
+app.listen(8080, () => {
+  console.log(`Example app listening at http://localhost:8080`)
 })
