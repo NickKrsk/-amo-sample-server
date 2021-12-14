@@ -72,11 +72,17 @@ app.get('/', async (req, res) => {
       code,
       accessToken,
       refreshToken,
+      domain,
     });
     console.log({ authData });
   } else {
     console.log(`clientId ${client_id} already exists`);
   }  
+});
+
+app.get('/api/leads', async (req, res) => {
+  console.log('/leads');
+
 });
 
 app.listen(8080, () => {

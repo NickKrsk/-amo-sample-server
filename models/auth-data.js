@@ -8,5 +8,6 @@ const authDataSchema = new mongoose.Schema({
   code: String,
   accessToken: String,
   refreshToken: String,
+  domain: String,
 });
 module.exports = {authDataSchema};
