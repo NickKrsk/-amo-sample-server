@@ -6,6 +6,8 @@ const jwt_decode = require('jwt-decode');
 const _ = require('lodash');
 const path = require('path');
 
+const { AuthData } = require('./models')
+
 // const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
 const redirect_uri = 'https://test3.services.mobilon.ru/';
 const client_secret = 'CPCr6PNVfarfu59vy2ORIAHRGD2EzLvkbQ0Kzeow2XhgkhromjQ0M67Sa49WFbop';
@@ -56,13 +58,25 @@ app.get('/', async (req, res) => {
     return;
   }
 
-  const access_token = resp.access_token;
-  const refresh_token = resp.refresh_token;
+  const accessToken = resp.access_token;
+  const refreshToken = resp.refresh_token;
 
-  console.log('resp', {access_token, refresh_token});
-  var decoded = jwt_decode(access_token);
+  console.log('resp', {accessToken, refreshToken});
+  var decoded = jwt_decode(accessToken);
   console.log('decoded', decoded);
 
+  const authData = await AuthData.findOne({ clientId: client_id });
+  if (!authData) {
+    const authData = await AuthData.create({
+      clientId: client_id,
+      code,
+      accessToken,
+      refreshToken,
+    });
+    console.log({ authData });
+  } else {
+    console.log(`clientId ${client_id} already exists`);
+  }  
 });
 
 app.listen(8080, () => {

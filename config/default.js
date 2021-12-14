@@ -1,3 +1,3 @@
 module.exports = {
-  mongodb: 'mongodb://app06.mobilon.ru:27027/recognition',
+  mongodb: 'mongodb+srv://sa:qwertyqwerty@cluster0.z9pze.mongodb.net/crmpad?',
 };
