@@ -6,9 +6,9 @@ const jwt_decode = require('jwt-decode');
 const _ = require('lodash');
 const path = require('path');
 
-const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
+// const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
 const redirect_uri = 'https://test3.services.mobilon.ru/';
-const client_secret = 'yKdq4UemoOgZanfuV2xi8UhlMYILH9SrVomsHAK4SGXOTSFcMu4DjOcLbG8HMIsz';
+const client_secret = 'CPCr6PNVfarfu59vy2ORIAHRGD2EzLvkbQ0Kzeow2XhgkhromjQ0M67Sa49WFbop';
 
 const app = express();
 app.set('view engine', 'pug');
@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
     res.send('OK');
   }
 
-  //console.log(req, res);
+  // console.log(req, res);
   const myUrl = url.parse(req.originalUrl);
 
   console.log('url', myUrl);
@@ -35,7 +35,8 @@ app.get('/', async (req, res) => {
   const domain = params.referer;
 
   if (!domain) { return; }
-  const code = params.code;
+
+  const { code, client_id } = params;
 
   const urlDomain = `https://${domain}/oauth2/access_token`;
   const data =  {
@@ -45,9 +46,15 @@ app.get('/', async (req, res) => {
     code,
     redirect_uri,
   };
-  console.log('data', urlDomain, data);
+  // console.log('data', urlDomain, data);
 
-  const resp = (await axios.post(urlDomain, data)).data;
+  let resp;
+  try {
+    resp = (await axios.post(urlDomain, data)).data;
+  }catch (e) {
+    console.log(e);
+    return;
+  }
 
   const access_token = resp.access_token;
   const refresh_token = resp.refresh_token;
