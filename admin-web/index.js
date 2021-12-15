@@ -12,6 +12,6 @@ app.use('/public', express['static'](path.join(__dirname, '/public')));
 app.use(express.json({limit: '2MB'}));
 app.use(require('./routes'));
 
-app.listen(config.get('admin-web.port'), () => {
+app.listen(config.get('apps.admin-web.port'), () => {
   console.log('Server admin-web has been started', config);
 });

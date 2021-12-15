@@ -5,6 +5,7 @@ const axios = require('axios');
 const jwt_decode = require('jwt-decode');
 const _ = require('lodash');
 const path = require('path');
+const config = require('config');
 
 const { AuthData } = require('./models')
 
@@ -85,6 +86,7 @@ app.get('/api/leads', async (req, res) => {
 
 });
 
-app.listen(8080, () => {
-  console.log(`Example app listening at http://localhost:8080`)
-})
+app.listen(config.get('apps.auth-server.port'), () => {
+  console.log('Auth server has been started', config);
+});
+
