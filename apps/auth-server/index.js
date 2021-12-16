@@ -7,7 +7,7 @@ const _ = require('lodash');
 const path = require('path');
 const config = require('config');
 
-const { AuthData } = require('./models')
+const { AuthData } = require('../../models')
 
 // const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
 const redirect_uri = 'https://test3.services.mobilon.ru/';
@@ -83,7 +83,6 @@ app.get('/', async (req, res) => {
 
 app.get('/api/leads', async (req, res) => {
   console.log('/leads');
-
 });
 
 app.listen(config.get('apps.auth-server.port'), () => {

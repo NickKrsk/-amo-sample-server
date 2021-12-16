@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index",
-    "start-admin-web": "node admin-web/index",
-    "start-api": "nodemon api/index.js"
+    "start-auth": "node apps/auth-server/index",
+    "start-admin-web": "node apps/admin-web/index",
+    "start-api": "node apps/api/index",
+
+    "dev-api": "nodemon apps/api/index.js",
+    "dev-auth": "nodemon apps/auth-server/index"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.1.3",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.20",
