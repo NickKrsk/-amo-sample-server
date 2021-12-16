@@ -10,7 +10,7 @@ const config = require('config');
 const { AuthData } = require('../../models')
 
 // const client_id = 'c5e9efbe-33a8-48ec-9879-53000b074542';
-const redirect_uri = 'https://test3.services.mobilon.ru/';
+const redirect_uri = config.get('apps.auth-server.redirect-uri');
 const client_secret = 'CPCr6PNVfarfu59vy2ORIAHRGD2EzLvkbQ0Kzeow2XhgkhromjQ0M67Sa49WFbop';
 
 const app = express();
